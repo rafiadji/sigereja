@@ -21,11 +21,16 @@
                 <div class="col-md-2 mb-3 mb-md-0">
                     <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" alt="" class="img-thumbnail rounded mb-2">
                     <a href="<?= base_url('user/edit'); ?>" class="btn btn-sm btn-block btn-primary"><i class="fa fa-edit"></i> Edit Profil</a>
-                    <a href="<?= base_url('user/detailumatbykk/') . $user['user_id']; ?> " class="btn btn-sm btn-block btn-outline-primary"><i class="fa fa-plus"></i> Anggota</a>
+                    <a href="<?= base_url('user/detailumatbykk/') . $user['nik_kk']; ?> " class="btn btn-sm btn-block btn-outline-primary"><i class="fa fa-users"></i> Anggota</a>
                 </div>
 
                 <div class="col-lg">
                     <table class="table table-striped w-100 dt-responsive nowrap">
+                        <tr>
+                            <th width="150">Nomor KK</th>
+                            <th width="150">:</th>
+                            <td><?= $user['nik_kk']; ?></td>
+                        </tr>
                         <tr>
                             <th width="150">NIK</th>
                             <th width="150">:</th>

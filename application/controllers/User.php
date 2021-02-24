@@ -119,6 +119,39 @@ class User extends CI_Controller
             redirect('user');
         }
     }
+
+    public function registrasibaptis($user_id)
+    {
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+        $data['title'] = 'Daftar Baptis';
+        $data['users'] = $this->User_model->getUmatById($user_id);
+
+        $this->form_validation->set_rules('id_peserta', 'Peserta', 'required');
+        $this->form_validation->set_rules('kat_baptis', 'Kategori Baptis', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('user/umat', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data = [
+                'user_id' => $this->input->post('id_peserta'),
+                'kat_baptis' => $this->input->post('kat_baptis')
+            ];
+
+            $this->db->insert('baptis', $data);
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>SUCCESS! Pendaftaran Peserta Baptis </div>');
+
+            redirect('user/detailumatbykk/' . $user_id);
+        }
+    }
+
     public function info()
     {
         $data['title'] = 'Info Paroki';
