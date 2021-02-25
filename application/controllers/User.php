@@ -81,42 +81,39 @@ class User extends CI_Controller
         }
     }
 
-    public function registrasinikah()
+    public function registrasinikah($user_id)
     {
-        $data['title'] = 'Daftar Nikah';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+        $data['title'] = 'Daftar Baptis';
+        $data['users'] = $this->User_model->getUmatById($user_id);
 
-
-        $this->form_validation->set_rules('n_cal_suami', 'Nama calon suami', 'required');
-        $this->form_validation->set_rules('a_cal_suami', 'Alamat calon suami', 'required');
-        $this->form_validation->set_rules('n_cal_istri', 'Nama calon istri', 'required');
-        $this->form_validation->set_rules('a_cal_istri', 'Alamat calon istri', 'required');
-        $this->form_validation->set_rules('n_saksi', 'Nama saksi', 'required');
-        $this->form_validation->set_rules('tgl_nikah', 'Tanggal nikah', 'required');
-        $this->form_validation->set_rules('tpt_nikah', 'Tempat pernikahan', 'required');
+        $this->form_validation->set_rules('id_peserta', 'Peserta', 'required');
+        $this->form_validation->set_rules('n_pasangan', 'Nama Pasangan', 'required');
+        $this->form_validation->set_rules('a_pasangan', 'Alamat Pasangan', 'required');
+        $this->form_validation->set_rules('n_saksi', 'Nama Saksi', 'required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
-            $this->load->view('user/nikah', $data);
+            $this->load->view('user/umat', $data);
             $this->load->view('templates/footer');
         } else {
             $data = [
-                'n_cal_suami' => $this->input->post('n_cal_suami'),
-                'a_cal_suami' => $this->input->post('a_cal_suami'),
-                'n_cal_istri' => $this->input->post('n_cal_istri'),
-                'a_cal_istri' => $this->input->post('a_cal_istri'),
-                'n_saksi' => $this->input->post('n_saksi'),
-                'tgl_nikah' => $this->input->post('tgl_nikah'),
-                'tpt_nikah' => $this->input->post('tpt_nikah')
+                'user_id' => $this->input->post('id_peserta'),
+                'n_pasangan' => $this->input->post('n_pasangan'),
+                'a_pasangan' => $this->input->post('a_pasangan'),
+                'n_saksi' => $this->input->post('n_saksi')
             ];
 
             $this->db->insert('nikah', $data);
 
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>SUCCESS! Anda dan pasangan anda sudah terdaftar, utuk selanjutnya hubungi pihak sekertariat </div>');
-            redirect('user');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>SUCCESS! Pendaftaran Pernikahan </div>');
+
+            redirect('user/detailumatbykk/' . $user_id);
         }
     }
 

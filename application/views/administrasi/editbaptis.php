@@ -23,18 +23,6 @@
                         <input type="hidden" name="baptis_id" value="<?= $baptis['baptis_id']; ?>">
 
                         <div class="form-group">
-                            <select name="sakramen" id="sakramen" class="form-control">
-                                <?php foreach ($sakramen as $ks) : ?>
-                                    <?php if ($ks == $baptis['sakramen']) : ?>
-                                        <option value="<?= $ks ?>" selected><?= $ks; ?> </option>
-                                    <?php else : ?>
-                                        <option value="<?= $ks ?>"><?= $ks; ?></option>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                            </select>
-                            <small class="form-text text-danger"><?= form_error('sakramen'); ?></small>
-                        </div>
-                        <div class="form-group">
                             <select name="kat_baptis" id="kat_baptis" class="form-control">
                                 <?php foreach ($katBaptis as $kb) : ?>
                                     <?php if ($kb == $baptis['kat_baptis']) : ?>
@@ -55,37 +43,6 @@
                         </div>
                         <div class="row form-group">
                             <div class="col-md">
-                                <input value="<?= $baptis['nama_lengkap']; ?>" name="nama_lengkap" type="text" class="form-control" placeholder="Nama lengkap ">
-                                <small class="form-text text-danger"><?= form_error('nama_lengkap'); ?></small>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <select name="jenis_kelamin" id="jenis_kelamin" class="form-control">
-                                <?php foreach ($jenis_kelamin as $jk) : ?>
-                                    <?php if ($jk == $baptis['jenis_kelamin']) : ?>
-                                        <option value="<?= $jk ?>" selected><?= $jk; ?> </option>
-                                    <?php else : ?>
-                                        <option value="<?= $jk ?>"><?= $jk; ?></option>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                            </select>
-                            <small class="form-text text-danger"><?= form_error('jenis_kelamin'); ?></small>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col-md">
-                                <input value="<?= $baptis['tempat_lahir']; ?>" name="tempat_lahir" class="form-control" placeholder="Tempat lahir">
-                                <small class="form-text text-danger"><?= form_error('tempat_lahir'); ?></small>
-                            </div>
-                        </div>
-                        <div class="row form-group">
-
-                            <div class="col-md">
-                                <input value="<?= $baptis['tanggal_lahir']; ?>" name="tanggal_lahir" type="text" class="form-control" placeholder="Tanggal lahir">
-                                <small class="form-text text-danger"><?= form_error('tanggal_lahir'); ?></small>
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col-md">
                                 <input value="<?= $baptis['tempat_baptis']; ?>" name="tempat_baptis" type="text" class="form-control" placeholder="Tempat baptis">
                                 <small class="form-text text-danger"><?= form_error('tempat_baptis'); ?></small>
                             </div>
@@ -93,21 +50,9 @@
                         <div class="row form-group">
 
                             <div class="col">
-                                <input value="<?= $baptis['tanggal_baptis']; ?>" name="tanggal_baptis" type="text" class="form-control" placeholder="Tanggal baptis">
+                                <input value="<?= $baptis['tanggal_baptis']; ?>" name="tanggal_baptis" type="date" class="form-control" placeholder="Tanggal baptis">
                                 <small class="form-text text-danger"><?= form_error('tanggal_baptis'); ?></small>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <select name="lingkungan" id="lingkungan" class="form-control">
-                                <?php foreach ($lingkungan as $lk) : ?>
-                                    <?php if ($lk == $baptis['lingkungan']) : ?>
-                                        <option value="<?= $lk ?>" selected><?= $lk; ?> </option>
-                                    <?php else : ?>
-                                        <option value="<?= $lk ?>"><?= $lk; ?></option>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                            </select>
-                            <small class="form-text text-danger"><?= form_error('lingkungan'); ?></small>
                         </div>
 
                         <div class="form-group row justify-content-end">

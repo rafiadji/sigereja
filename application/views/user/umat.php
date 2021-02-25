@@ -16,6 +16,7 @@
 						<?= $this->session->flashdata('message'); ?>
 						<a href="" class="btn btn-outline-primary btn-sm mb-4" data-toggle="modal" data-target="#modalTambahAnggota"><i class="fa fa-plus"></i> Tambah Anggota </a>
 						<a href="" class="btn btn-outline-primary btn-sm mb-4" data-toggle="modal" data-target="#modalDaftarBaptis"><i class="fa fa-address-card"></i> Pendaftaran Baptis </a>
+						<a href="" class="btn btn-outline-primary btn-sm mb-4" data-toggle="modal" data-target="#modalDaftarNikah"><i class="fa fa-restroom"></i> Pendaftaran Nikah </a>
 						<table class="table table-hover w-100 dt-responsive nowrap" id="dataTable">
 							<!-- <?php print_r($users) ?> -->
 							<thead>
@@ -194,6 +195,54 @@
 			</div>
 		</div>
 		<!-- End Modal Daftar Baptis -->
+
+		<!-- Modal Daftar Nikah -->
+		<div class="modal fade" id="modalDaftarNikah" tabindex="-1" aria-labelledby="modalDaftarNikah" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="modalDaftarNikah">Pendaftaran Nikah</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+
+					<form action="<?= base_url('user/registrasinikah/' . $user['nik_kk']) ?>" method="post">
+						<div class="modal-body">
+							<div class="form-group">
+								<select name="id_peserta" id="id_peserta" class="form-control">
+									<option value="">-Nama Pendaftar-</option>
+									<?php foreach ($users as $u) : if ($u['st_nikah'] == "Belum") : ?>
+											<option value="<?php echo $u['user_id'] ?>"><?php echo $u['name'] ?></option>
+									<?php endif;
+									endforeach; ?>
+								</select>
+								<?= form_error('id_peserta', '<small class="text-danger pl-3">', '</small>'); ?>
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-6 mb-3 mb-sm-0">
+									<input type="text" class="form-control" id="n_pasangan" name="n_pasangan" placeholder="Nama Pasangan" value="<?= set_value('n_pasangan'); ?>">
+									<?= form_error('n_pasangan', '<small class="text-danger pl-3">', '</small>'); ?>
+								</div>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" id="a_pasangan" name="a_pasangan" placeholder="Alamat Pasangan" value="<?= set_value('a_pasangan'); ?>">
+									<?= form_error('a_pasangan', '<small class="text-danger pl-3">', '</small>'); ?>
+								</div>
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" id="n_saksi" name="n_saksi" placeholder="Nama Saksi" value="<?= set_value('n_saksi'); ?>">
+								<?= form_error('n_saksi', '<small class="text-danger pl-3">', '</small>'); ?>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Batal</button>
+							<button type="submit" class="btn btn-primary btn-sm">Daftar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- End Modal Daftar Nikah -->
 
 	</div>
 

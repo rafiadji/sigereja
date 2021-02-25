@@ -21,32 +21,16 @@
                     <div class="col-lg">
                         <table class="table table-hover w-100 dt-responsive nowrap">
                             <tr>
-                                <th widtd="20">Sakramen diterima</th>
-                                <td> <?= $baptis['sakramen']; ?></td>
-                            </tr>
-                            <tr>
                                 <th widtd="20">Nama baptis</th>
                                 <td> <?= $baptis['nama_baptis']; ?></td>
                             </tr>
                             <tr>
                                 <th widtd="20">Nama lengkap</th>
-                                <td><?= $baptis['nama_lengkap']; ?></td>
-                            </tr>
-                            <tr>
-                                <th widtd="20">Jenis Kelamin</th>
-                                <td><?= $baptis['jenis_kelamin']; ?></td>
-                            </tr>
-                            <tr>
-                                <th widtd="20">Tempat lahir</th>
-                                <td><?= $baptis['tempat_lahir'];  ?></td>
+                                <td><?= $baptis['name']; ?></td>
                             </tr>
                             <tr>
                                 <th widtd="20">Kategori baptis</th>
                                 <td><?= $baptis['kat_baptis'];  ?></td>
-                            </tr>
-                            <tr>
-                                <th widtd="20">Tanggal lahir</th>
-                                <td><?= date('d F Y', strtotime($baptis['tanggal_lahir'])); ?></td>
                             </tr>
                             <tr>
                                 <th>Tempat baptis</th>
@@ -55,10 +39,6 @@
                             <tr>
                                 <th widtd="20">Tanggal baptis</th>
                                 <td><?= date('d F Y', strtotime($baptis['tanggal_baptis'])); ?></td>
-                            </tr>
-                            <tr>
-                                <th>Lingkungan</th>
-                                <td><?= $baptis['lingkungan']; ?> </td>
                             </tr>
                         </table>
                         <div class="col-auto">

@@ -21,8 +21,7 @@
                         <table class="table table-striped w-100 dt-responsive nowrap" id="dataTable">
                             <thead>
                                 <tr>
-                                    <th>Nama pasangan</th>
-                                    <th>Alama pasangan</th>
+                                    <th>Nama pendaftar</th>
                                     <th>Nama pasangan</th>
                                     <th>Alamat pasangan</th>
                                     <th>Nama Saksi</th>
@@ -34,8 +33,7 @@
 
                                 <?php foreach ($nikah as $n) : ?>
                                     <tr>
-                                        <td><?= $n['nama_']; ?></td>
-                                        <td><?= $n['alamat_kk']; ?></td>
+                                        <td><?= $n['name']; ?></td>
                                         <td><?= $n['n_pasangan']; ?></td>
                                         <td><?= $n['a_pasangan']; ?></td>
                                         <td><?= $n['n_saksi']; ?></td>

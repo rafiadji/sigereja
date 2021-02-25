@@ -8,7 +8,7 @@ class Administrasi_model extends CI_Model
   public function getBaptisByid($baptis_id)
   {
 
-    return $this->db->get_where('baptis', ['baptis_id' => $baptis_id])->row_array();
+    return $this->db->get_where('daftar_baptis', ['baptis_id' => $baptis_id])->row_array();
   }
 
   public function updatebaptis()

@@ -16,7 +16,7 @@ class Administrasi extends CI_Controller
     {
         $data['title'] = 'Baptis';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['baptis'] = $this->db->get('baptis')->result_array();
+        $data['baptis'] = $this->db->get('daftar_baptis')->result_array();
 
         $this->form_validation->set_rules('kat_baptis', 'Kategori baptis', 'required');
         $this->form_validation->set_rules('sakramen', 'Sakramen', 'required');
@@ -61,23 +61,12 @@ class Administrasi extends CI_Controller
         $data['title'] = 'Edit baptis';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['baptis'] = $this->administrasi_model->getBaptisByid($baptis_id);
-        $data['jenis_kelamin'] = ['Laki-laki', 'Perempuan'];
-        $data['lingkungan'] = ['Agatha', 'Bernadeta', 'Caroline', 'Elizabeth', 'Fransiskus', 'Ignasius', 'Maria', 'Nikolas', 'Petrus', 'Sisilia', 'Yohanes'];
-        $data['sakramen'] = ['Pembaptisan', 'Ekaristi', 'Perkawinan', 'Penguatan', 'Pengurapan', 'Imamat', 'Tobat'];
-        $data['katBaptis'] = ['Balita', 'Remaja', 'Dewasa'];
+		$data['katBaptis'] = ['Balita', 'Remaja', 'Dewasa'];
 
-        $this->form_validation->set_rules('kat_baptis', 'Kategori baptis', 'required');
-        $this->form_validation->set_rules('sakramen', 'Sakramen', 'required');
         $this->form_validation->set_rules('kat_baptis', 'Kategori baptis', 'required');
         $this->form_validation->set_rules('nama_baptis', 'Nama baptis', 'required');
-        $this->form_validation->set_rules('nama_lengkap', 'Nama_lengkap', 'required');
-        $this->form_validation->set_rules('jenis_kelamin', 'Jenis kelamin', 'required');
-        $this->form_validation->set_rules('tempat_lahir', 'Tempat lahir', 'required');
-        $this->form_validation->set_rules('tanggal_lahir', 'Tanggal lahir', 'required');
         $this->form_validation->set_rules('tempat_baptis', 'Tempat baptis', 'required');
         $this->form_validation->set_rules('tanggal_baptis', 'Tanggal baptis', 'required');
-        $this->form_validation->set_rules('lingkungan', 'Nama lingkungan', 'required');
-
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
@@ -216,8 +205,8 @@ class Administrasi extends CI_Controller
         $data['title'] = 'Nikah';
 
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['nikah'] = $this->db->get('v_nikah')->result_array();
-        $data['umat'] = $this->db->get_where('umat')->result_array();
+        $data['nikah'] = $this->db->get('daftar_nikah')->result_array();
+        // $data['umat'] = $this->db->get_where('umat')->result_array();
 
 
         $this->form_validation->set_rules('nama_', 'Nama pasangan', 'required');

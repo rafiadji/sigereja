@@ -19,32 +19,22 @@
                         <table class="table table-striped w-100 dt-responsive nowrap" id="dataTable">
                             <thead>
                                 <tr>
-                                    <th>Nama baptis</th>
                                     <th>Nama Lengkap</th>
-                                    <th>Jenis Kelamin</th>
-                                    <th>Tempat lahir</th>
-                                    <th>Tanggal lahir</th>
-                                    <th>Sakramen</th>
+									<th>Nama baptis</th>
                                     <th>Kategori</th>
                                     <th>Tempat baptis</th>
                                     <th>Tanggal baptis</th>
-                                    <th>Lingkungan</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($baptis as $b) : ?>
                                     <tr>
+                                        <td><?= $b['name']; ?></td>
                                         <td><?= $b['nama_baptis']; ?></td>
-                                        <td><?= $b['nama_lengkap']; ?></td>
-                                        <td><?= $b['jenis_kelamin']; ?></td>
-                                        <td><?= $b['tempat_lahir']; ?></td>
-                                        <td><?= date('d F Y', strtotime($b['tanggal_lahir'])); ?></td>
-                                        <td><?= $b['sakramen']; ?></td>
                                         <td><?= $b['kat_baptis']; ?></td>
                                         <td><?= $b['tempat_baptis']; ?></td>
-                                        <td><?= date('d F Y', strtotime($b['tanggal_baptis'])); ?></td>
-                                        <td><?= $b['lingkungan']; ?></td>
+                                        <td><?= $b['tanggal_baptis']; ?></td>
                                         <th>
                                             <a href="<?= base_url('administrasi/editbaptis/') . $b['baptis_id']; ?> " class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
                                             <a href="<?= base_url('administrasi/detailbaptis/') . $b['baptis_id']; ?> " class="btn btn-success btn-circle btn-sm"><i class="fa fa-info"></i></a>
