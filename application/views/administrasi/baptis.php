@@ -22,7 +22,6 @@
                                     <th>Nama Lengkap</th>
 									<th>Nama baptis</th>
                                     <th>Kategori</th>
-                                    <th>Tempat baptis</th>
                                     <th>Tanggal baptis</th>
                                     <th>Action</th>
                                 </tr>
@@ -33,7 +32,6 @@
                                         <td><?= $b['name']; ?></td>
                                         <td><?= $b['nama_baptis']; ?></td>
                                         <td><?= $b['kat_baptis']; ?></td>
-                                        <td><?= $b['tempat_baptis']; ?></td>
                                         <td><?= $b['tanggal_baptis']; ?></td>
                                         <th>
                                             <a href="<?= base_url('administrasi/editbaptis/') . $b['baptis_id']; ?> " class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>

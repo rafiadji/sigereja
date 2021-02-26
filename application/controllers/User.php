@@ -125,6 +125,7 @@ class User extends CI_Controller
         $data['users'] = $this->User_model->getUmatById($user_id);
 
         $this->form_validation->set_rules('id_peserta', 'Peserta', 'required');
+        $this->form_validation->set_rules('nama_baptis', 'Nama Baptis', 'required');
         $this->form_validation->set_rules('kat_baptis', 'Kategori Baptis', 'required');
 
         if ($this->form_validation->run() == false) {
@@ -136,6 +137,7 @@ class User extends CI_Controller
         } else {
             $data = [
                 'user_id' => $this->input->post('id_peserta'),
+                'nama_baptis' => $this->input->post('nama_baptis'),
                 'kat_baptis' => $this->input->post('kat_baptis')
             ];
 

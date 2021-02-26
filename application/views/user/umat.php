@@ -185,6 +185,10 @@
 								</select>
 								<small class="form-text text-danger"><?= form_error('kat_baptis'); ?></small>
 							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" id="nama_baptis" name="nama_baptis" placeholder="Nama Saksi" value="<?= set_value('nama_baptis'); ?>">
+								<?= form_error('nama_baptis', '<small class="text-danger pl-3">', '</small>'); ?>
+							</div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Batal</button>
