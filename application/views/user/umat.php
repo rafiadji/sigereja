@@ -165,6 +165,15 @@
 
 					<form action="<?= base_url('user/registrasibaptis/' . $user['nik_kk']) ?>" method="post">
 						<div class="modal-body">
+							<div class="form-group row">
+								<div class="col-sm-4">
+									<label for="tgl_baptis" class="control-label">Tanggal Baptis</label>
+								</div>
+								<div class="col-sm-8">
+									<input type="date" class="form-control" id="tgl_baptis" name="tgl_baptis">
+									<?= form_error('tgl_baptis', '<small class="text-danger pl-3">', '</small>'); ?>
+								</div>
+							</div>
 							<div class="form-group">
 								<select name="id_peserta" id="id_peserta" class="form-control">
 									<option value="">-Nama Peserta-</option>
@@ -186,7 +195,7 @@
 								<small class="form-text text-danger"><?= form_error('kat_baptis'); ?></small>
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" id="nama_baptis" name="nama_baptis" placeholder="Nama Saksi" value="<?= set_value('nama_baptis'); ?>">
+								<input type="text" class="form-control" id="nama_baptis" name="nama_baptis" placeholder="Nama Baptis" value="<?= set_value('nama_baptis'); ?>">
 								<?= form_error('nama_baptis', '<small class="text-danger pl-3">', '</small>'); ?>
 							</div>
 						</div>
@@ -213,6 +222,15 @@
 
 					<form action="<?= base_url('user/registrasinikah/' . $user['nik_kk']) ?>" method="post">
 						<div class="modal-body">
+							<div class="form-group row">
+								<div class="col-sm-4">
+									<label for="tgl_nikah" class="control-label">Tanggal Nikah</label>
+								</div>
+								<div class="col-sm-8">
+									<input type="date" class="form-control" id="tgl_nikah" name="tgl_nikah">
+									<?= form_error('tgl_nikah', '<small class="text-danger pl-3">', '</small>'); ?>
+								</div>
+							</div>
 							<div class="form-group">
 								<select name="id_peserta" id="id_peserta" class="form-control">
 									<option value="">-Nama Pendaftar-</option>
@@ -225,13 +243,17 @@
 							</div>
 							<div class="form-group row">
 								<div class="col-sm-6 mb-3 mb-sm-0">
+									<input type="text" class="form-control" id="nik_pasangan" name="nik_pasangan" placeholder="NIK" value="<?= set_value('nik_pasangan'); ?>">
+									<?= form_error('nik_pasangan', '<small class="text-danger pl-3">', '</small>'); ?>
+								</div>
+								<div class="col-sm-6">
 									<input type="text" class="form-control" id="n_pasangan" name="n_pasangan" placeholder="Nama Pasangan" value="<?= set_value('n_pasangan'); ?>">
 									<?= form_error('n_pasangan', '<small class="text-danger pl-3">', '</small>'); ?>
 								</div>
-								<div class="col-sm-6">
-									<input type="text" class="form-control" id="a_pasangan" name="a_pasangan" placeholder="Alamat Pasangan" value="<?= set_value('a_pasangan'); ?>">
-									<?= form_error('a_pasangan', '<small class="text-danger pl-3">', '</small>'); ?>
-								</div>
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" id="a_pasangan" name="a_pasangan" placeholder="Alamat Pasangan" value="<?= set_value('a_pasangan'); ?>">
+								<?= form_error('a_pasangan', '<small class="text-danger pl-3">', '</small>'); ?>
 							</div>
 							<div class="form-group">
 								<input type="text" class="form-control" id="n_saksi" name="n_saksi" placeholder="Nama Saksi" value="<?= set_value('n_saksi'); ?>">
