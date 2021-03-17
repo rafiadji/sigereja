@@ -42,12 +42,6 @@
                             </div>
                         </div>
                         <div class="row form-group">
-                            <div class="col-md">
-                                <input value="<?= $baptis['tempat_baptis']; ?>" name="tempat_baptis" type="text" class="form-control" placeholder="Tempat baptis">
-                                <small class="form-text text-danger"><?= form_error('tempat_baptis'); ?></small>
-                            </div>
-                        </div>
-                        <div class="row form-group">
 
                             <div class="col">
                                 <input value="<?= $baptis['tanggal_baptis']; ?>" name="tanggal_baptis" type="date" class="form-control" placeholder="Tanggal baptis">

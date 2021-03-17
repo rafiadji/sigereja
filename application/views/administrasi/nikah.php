@@ -21,11 +21,11 @@
                         <table class="table table-striped w-100 dt-responsive nowrap" id="dataTable">
                             <thead>
                                 <tr>
+                                    <th>Tanggal Nikah</th>
                                     <th>Nama pendaftar</th>
                                     <th>Nama pasangan</th>
                                     <th>Alamat pasangan</th>
                                     <th>Nama Saksi</th>
-                                    <th>Tanggal Nikah</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -33,11 +33,11 @@
 
                                 <?php foreach ($nikah as $n) : ?>
                                     <tr>
+                                        <td><?= date('d F Y', strtotime($n['tgl_nikah'])); ?></td>
                                         <td><?= $n['name']; ?></td>
                                         <td><?= $n['n_pasangan']; ?></td>
                                         <td><?= $n['a_pasangan']; ?></td>
                                         <td><?= $n['n_saksi']; ?></td>
-                                        <td><?= $n['tgl_nikah']; ?></td>
                                         <th>
                                             <a href="<?= base_url('administrasi/editnikah/') . $n['nikah_id']; ?> " class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
                                             <a href="<?= base_url('administrasi/detailnikah/') . $n['nikah_id']; ?> " class="btn btn-success btn-circle btn-sm"><i class="fa fa-info"></i></a>

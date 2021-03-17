@@ -33,10 +33,6 @@
                                 <td><?= $baptis['kat_baptis'];  ?></td>
                             </tr>
                             <tr>
-                                <th>Tempat baptis</th>
-                                <td><?= $baptis['tempat_baptis']; ?> </td>
-                            </tr>
-                            <tr>
                                 <th widtd="20">Tanggal baptis</th>
                                 <td><?= date('d F Y', strtotime($baptis['tanggal_baptis'])); ?></td>
                             </tr>

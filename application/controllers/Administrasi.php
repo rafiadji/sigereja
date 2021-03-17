@@ -16,7 +16,7 @@ class Administrasi extends CI_Controller
     {
         $data['title'] = 'Baptis';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['baptis'] = $this->db->get('daftar_baptis')->result_array();
+        $data['baptis'] = $this->db->where('tanggal_baptis >= NOW()')->get('daftar_baptis')->result_array();
 
         $this->form_validation->set_rules('kat_baptis', 'Kategori baptis', 'required');
         $this->form_validation->set_rules('sakramen', 'Sakramen', 'required');
@@ -205,7 +205,7 @@ class Administrasi extends CI_Controller
         $data['title'] = 'Nikah';
 
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['nikah'] = $this->db->get('daftar_nikah')->result_array();
+        $data['nikah'] = $this->db->where('tgl_nikah >= NOW()')->get('daftar_nikah')->result_array();
         // $data['umat'] = $this->db->get_where('umat')->result_array();
 
 
