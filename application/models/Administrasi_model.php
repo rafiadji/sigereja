@@ -12,21 +12,17 @@ class Administrasi_model extends CI_Model
 
 	public function updatebaptis()
 	{
-		$data = [
-			'kat_baptis' => $this->input->post('kat_baptis'),
-			'sakramen' => $this->input->post('sakramen'),
-			'nama_baptis' => $this->input->post('nama_baptis'),
-			'nama_lengkap' => $this->input->post('nama_lengkap'),
-			'jenis_kelamin' => $this->input->post('jenis_kelamin'),
-			'tempat_lahir' => $this->input->post('tempat_lahir'),
-			'tanggal_lahir' => $this->input->post('tanggal_lahir'),
-			'tempat_baptis' => $this->input->post('tempat_baptis'),
-			'tanggal_baptis' => $this->input->post('tanggal_baptis'),
-			'lingkungan' => $this->input->post('lingkungan')
-		];
+		$cek = $this->input->post('pilihan');
 
-		$this->db->where('baptis_id', $this->input->post('baptis_id'));
-		$this->db->update('baptis', $data);
+		for ($i = 0; $i < count($cek); $i++) {
+			$data = [
+				'tanggal_baptis' => $this->input->post('tanggal_baptis'),
+				'st_konfrim' => "1",
+			];
+
+			$this->db->where('baptis_id', $cek[$i]);
+			$this->db->update('baptis', $data);
+		}
 	}
 
 	public function deletDataBaptis($baptis_id)

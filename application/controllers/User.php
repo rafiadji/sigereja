@@ -139,10 +139,11 @@ class User extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $data = [
-                'tanggal_baptis' => $this->input->post('tgl_baptis'),
+                // 'tanggal_baptis' => $this->input->post('tgl_baptis'),
                 'user_id' => $this->input->post('id_peserta'),
                 'nama_baptis' => $this->input->post('nama_baptis'),
-                'kat_baptis' => $this->input->post('kat_baptis')
+                'kat_baptis' => $this->input->post('kat_baptis'),
+				'st_konfrim' => "0"
             ];
 
             $this->db->insert('baptis', $data);
@@ -177,6 +178,7 @@ class User extends CI_Controller
 
         $this->form_validation->set_rules('nik', 'NIK', 'required');
         $this->form_validation->set_rules('name', 'Nama', 'required');
+        $this->form_validation->set_rules('st_baptis', 'Status baptis', 'required');
         $this->form_validation->set_rules('st_nikah', 'Status nikah', 'required');
         $this->form_validation->set_rules('jk', 'Jenis kelamin', 'required');
         $this->form_validation->set_rules('tpt_lahir', 'Tempat lahir', 'required');
@@ -196,6 +198,7 @@ class User extends CI_Controller
                 'nik' => $this->input->post('nik'),
                 'nik_kk' => $user_id, //user_id == nik_kk
                 'name' => $this->input->post('name'),
+                'st_baptis' => $this->input->post('st_baptis'),
                 'st_nikah' => $this->input->post('st_nikah'),
                 'jk' => $this->input->post('jk'),
                 'tpt_lahir' => $this->input->post('tpt_lahir'),

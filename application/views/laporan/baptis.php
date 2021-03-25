@@ -49,7 +49,6 @@
                                             <th>Jenis Kelamin</th>
                                             <th>Tempat lahir</th>
                                             <th>Tanggal lahir</th>
-                                            <th>Tempat baptis</th>
                                             <th>Tanggal baptis</th>
                                             <th>Lingkungan</th>
                                         </tr>
@@ -59,13 +58,12 @@
                                         <?php foreach ($laporan_baptis as $b) : ?>
                                             <tr>
                                                 <td><?= $b['nama_baptis']; ?></td>
-                                                <td><?= $b['nama_lengkap']; ?></td>
-                                                <td><?= $b['jenis_kelamin']; ?></td>
-                                                <td><?= $b['tempat_lahir']; ?></td>
-                                                <td><?= date('d F Y', strtotime($b['tanggal_lahir'])); ?></td>
-                                                <td><?= $b['tempat_baptis']; ?></td>
+                                                <td><?= $b['name']; ?></td>
+                                                <td><?= $b['jk']; ?></td>
+                                                <td><?= $b['tpt_lahir']; ?></td>
+                                                <td><?= date('d F Y', strtotime($b['tgl_lahir'])); ?></td>
                                                 <td><?= date('d F Y', strtotime($b['tanggal_baptis'])); ?></td>
-                                                <td><?= $b['lingkungan']; ?></td>
+                                                <td><?= $b['alamat_kk']; ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>

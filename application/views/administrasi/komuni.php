@@ -19,7 +19,7 @@
                         <a href="" class="btn btn-outline-primary btn-sm mb-4" data-toggle="modal" data-target="#newKomuniModal"><i class="fa fa-plus"></i> Tambah Data Komuni </a>
 
                         <div class="table-responsive">
-                            <table class="table table-striped w-100 dt-responsive nowrap" id="dataTable">
+                            <table class="table table-striped w-100 dt-responsive nowrap dataTable">
                                 <thead>
                                     <tr>
                                         <th>Nama Lengkap</th>

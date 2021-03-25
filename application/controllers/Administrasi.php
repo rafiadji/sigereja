@@ -16,18 +16,25 @@ class Administrasi extends CI_Controller
     {
         $data['title'] = 'Baptis';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['baptis'] = $this->db->where('tanggal_baptis >= NOW()')->get('daftar_baptis')->result_array();
+        $data['baptis'] = $this->db->where('st_baptis','Terdaftar')->get('daftar_baptis')->result_array();
+        $data['baptis_laksana'] = $this->db->where('st_baptis','Pelaksanaan')->get('daftar_baptis')->result_array();
+        $data['baptis_sudah'] = $this->db->where('st_baptis','Sudah')->get('daftar_baptis')->result_array();
+		
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('administrasi/baptis', $data);
+		$this->load->view('templates/footer');
+    }
 
-        $this->form_validation->set_rules('kat_baptis', 'Kategori baptis', 'required');
-        $this->form_validation->set_rules('sakramen', 'Sakramen', 'required');
-        $this->form_validation->set_rules('nama_baptis', 'Nama baptis', 'required');
-        $this->form_validation->set_rules('nama_lengkap', 'Nama_lengkap', 'required');
-        $this->form_validation->set_rules('jenis_kelamin', 'Jenis kelamin', 'required');
-        $this->form_validation->set_rules('tempat_lahir', 'Tempat lahir', 'required');
-        $this->form_validation->set_rules('tanggal_lahir', 'Tanggal lahir', 'required');
-        $this->form_validation->set_rules('tempat_baptis', 'Tempat baptis', 'required');
+    public function editbaptis()
+    {
+        $data['title'] = 'Edit baptis';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['baptis'] = $this->db->where('st_baptis','Terdaftar')->get('daftar_baptis')->result_array();
+
         $this->form_validation->set_rules('tanggal_baptis', 'Tanggal baptis', 'required');
-        $this->form_validation->set_rules('lingkungan', 'Nama lingkungan', 'required');
+        $this->form_validation->set_rules('pilihan[]', 'Peserta', 'required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
@@ -36,49 +43,8 @@ class Administrasi extends CI_Controller
             $this->load->view('administrasi/baptis', $data);
             $this->load->view('templates/footer');
         } else {
-            $data = [
-                'sakramen' => $this->input->post('sakramen'),
-                'kat_baptis' => $this->input->post('kat_baptis'),
-                'nama_baptis' => $this->input->post('nama_baptis'),
-                'nama_lengkap' => $this->input->post('nama_lengkap'),
-                'jenis_kelamin' => $this->input->post('jenis_kelamin'),
-                'tempat_lahir' => $this->input->post('tempat_lahir'),
-                'tanggal_lahir' => $this->input->post('tanggal_lahir'),
-                'tempat_baptis' => $this->input->post('tempat_baptis'),
-                'tanggal_baptis' => $this->input->post('tanggal_baptis'),
-                'lingkungan' => $this->input->post('lingkungan')
-            ];
-            $this->db->insert('baptis', $data);
-
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>SUCCESS! Tambah data baptis </div>');
-            redirect('administrasi');
-        }
-    }
-
-    public function editbaptis($baptis_id)
-    {
-        $data['title'] = 'Edit baptis';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['baptis'] = $this->administrasi_model->getBaptisByid($baptis_id);
-		$data['katBaptis'] = ['Balita', 'Remaja', 'Dewasa'];
-
-        $this->form_validation->set_rules('kat_baptis', 'Kategori baptis', 'required');
-        $this->form_validation->set_rules('nama_baptis', 'Nama baptis', 'required');
-        $this->form_validation->set_rules('tempat_baptis', 'Tempat baptis', 'required');
-        $this->form_validation->set_rules('tanggal_baptis', 'Tanggal baptis', 'required');
-
-        if ($this->form_validation->run() == false) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('administrasi/editbaptis', $data);
-            $this->load->view('templates/footer');
-        } else {
-
             $this->administrasi_model->updatebaptis();
-
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span></button>SUCCESS! Update data baptis </div>');
             redirect('administrasi');
         }

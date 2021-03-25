@@ -18,7 +18,7 @@
                     <a href="" class="btn btn-outline-primary btn-sm mb-4" data-toggle="modal" data-target="#newNikahModal"><i class="fa fa-plus"></i> Tambah Data Nikah </a>
 
                     <div class="table-responsive">
-                        <table class="table table-striped w-100 dt-responsive nowrap" id="dataTable">
+                        <table class="table table-striped w-100 dt-responsive nowrap dataTable">
                             <thead>
                                 <tr>
                                     <th>Tanggal Nikah</th>
