@@ -17,7 +17,7 @@ class Administrasi extends CI_Controller
         $data['title'] = 'Baptis';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['baptis'] = $this->db->where('st_baptis','Terdaftar')->get('daftar_baptis')->result_array();
-        $data['baptis_laksana'] = $this->db->where('st_baptis','Pelaksanaan')->get('daftar_baptis')->result_array();
+        $data['baptis_laksana'] = $this->db->where('st_baptis','Pelaksanaan')->group_by('tanggal_baptis')->get('daftar_baptis')->result_array();
         $data['baptis_sudah'] = $this->db->where('st_baptis','Sudah')->get('daftar_baptis')->result_array();
 		
 		$this->load->view('templates/header', $data);
@@ -63,6 +63,28 @@ class Administrasi extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+	public function pelaksanaanbaptis($tanggal_baptis)
+    {
+        $data['title'] = 'Peserta baptis';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['baptis_laksana'] = $this->db->where('st_baptis','Pelaksanaan')->where('tanggal_baptis', $tanggal_baptis)->get('daftar_baptis')->result_array();
+		$data['tgl'] = $tanggal_baptis;
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('administrasi/pelaksanaanbaptis', $data);
+        $this->load->view('templates/footer');
+    }
+
+	public function laksanabaptis()
+    {
+        $this->administrasi_model->laksanabaptis();
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button> SUCCESS! Data baptis telah dihapus</div>');
+        redirect('administrasi');
+    }
 
     public function deletebaptis($baptis_id)
     {

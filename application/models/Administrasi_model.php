@@ -25,6 +25,30 @@ class Administrasi_model extends CI_Model
 		}
 	}
 
+	public function laksanabaptis()
+	{
+		$cek = $this->input->post('pilihan');
+		switch($this->input->post('kehadiran')){
+			case 'hadir':
+				$st = 'Sudah';
+				break;
+			case 'ulang':
+				$st = 'Terdaftar';
+				break;
+			case 'batal':
+				$st = 'Belum';
+				break;
+		}
+
+		for ($i = 0; $i < count($cek); $i++) {
+			$this->db->where('baptis_id', $cek[$i]);
+			$usr = $this->db->get('baptis')->row_array();
+
+			$this->db->where('user_id', $usr['user_id']);
+			$this->db->update('user', array('st_baptis' => $st));
+		}
+	}
+
 	public function deletDataBaptis($baptis_id)
 	{
 		$this->db->where('baptis_id', $baptis_id);
