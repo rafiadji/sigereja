@@ -85,7 +85,7 @@ class User extends CI_Controller
     {
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
-        $data['title'] = 'Daftar Baptis';
+        $data['title'] = 'Daftar Nikah';
         $data['users'] = $this->User_model->getUmatById($user_id);
 
         $this->form_validation->set_rules('id_peserta', 'Peserta', 'required');
@@ -102,12 +102,12 @@ class User extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $data = [
-                'tgl_nikah' => $this->input->post('tgl_nikah'),
                 'user_id' => $this->input->post('id_peserta'),
                 'nik_pasangan' => $this->input->post('nik_pasangan'),
                 'n_pasangan' => $this->input->post('n_pasangan'),
                 'a_pasangan' => $this->input->post('a_pasangan'),
-                'n_saksi' => $this->input->post('n_saksi')
+                'n_saksi' => $this->input->post('n_saksi'),
+				'st_konfrim' => "0"
             ];
 
             $this->db->insert('nikah', $data);
