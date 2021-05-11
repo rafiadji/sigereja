@@ -52,9 +52,9 @@
 											<td><?= $b['nama_baptis']; ?></td>
 											<td><?= $b['kat_baptis']; ?></td>
 											<th>
-												<!-- <a href="<?= base_url('administrasi/editbaptis/') . $b['baptis_id']; ?> " class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a> -->
+												<!-- <a href="<?//= base_url('administrasi/editbaptis/') . $b['baptis_id']; ?> " class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a> -->
 												<a href="<?= base_url('administrasi/detailbaptis/') . $b['baptis_id']; ?> " class="btn btn-success btn-circle btn-sm"><i class="fa fa-info"></i></a>
-												<a href="<?= base_url('administrasi/deletebaptis/') . $b['baptis_id']; ?> " class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Yakin hapus data ini?')"><i class="fa fa-trash"></i></a>
+												<!-- <a href="<?//= base_url('administrasi/deletebaptis/') . $b['baptis_id']; ?> " class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Yakin hapus data ini?')"><i class="fa fa-trash"></i></a> -->
 											</th>
 										</tr>
 
@@ -64,13 +64,12 @@
 						</div>
 					</div>
 					<div class="tab-pane" id="pelaksanaan" role="tabpanel">
-					<div class="table-responsive">
+						<div class="table-responsive">
 							<table class="table table-striped w-100 dt-responsive nowrap dataTable">
 								<thead>
 									<tr>
 										<th>Tanggal baptis</th>
 										<th>Peserta</th>
-										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -82,11 +81,6 @@
 												<td>Belum di Atur</td>
 											<?php endif; ?>
 											<td><a href="<?= base_url('administrasi/pelaksanaanbaptis/') . $b['tanggal_baptis']; ?> " class="btn btn-success btn-sm">Presensi Peserta</a></td>
-											<th>
-												<!-- <a href="<?= base_url('administrasi/editbaptis/') . $b['baptis_id']; ?> " class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a> -->
-												<a href="<?= base_url('administrasi/detailbaptis/') . $b['baptis_id']; ?> " class="btn btn-success btn-circle btn-sm"><i class="fa fa-info"></i></a>
-												<a href="<?= base_url('administrasi/deletebaptis/') . $b['baptis_id']; ?> " class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Yakin hapus data ini?')"><i class="fa fa-trash"></i></a>
-											</th>
 										</tr>
 
 									<?php endforeach; ?>
@@ -95,7 +89,7 @@
 						</div>
 					</div>
 					<div class="tab-pane" id="sudah" role="tabpanel">
-					<div class="table-responsive">
+						<div class="table-responsive">
 							<table class="table table-striped w-100 dt-responsive nowrap dataTable">
 								<thead>
 									<tr>
@@ -118,9 +112,9 @@
 											<td><?= $b['nama_baptis']; ?></td>
 											<td><?= $b['kat_baptis']; ?></td>
 											<th>
-												<!-- <a href="<?= base_url('administrasi/editbaptis/') . $b['baptis_id']; ?> " class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a> -->
+												<!-- <a href="<?//= base_url('administrasi/editbaptis/') . $b['baptis_id']; ?> " class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a> -->
 												<a href="<?= base_url('administrasi/detailbaptis/') . $b['baptis_id']; ?> " class="btn btn-success btn-circle btn-sm"><i class="fa fa-info"></i></a>
-												<a href="<?= base_url('administrasi/deletebaptis/') . $b['baptis_id']; ?> " class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Yakin hapus data ini?')"><i class="fa fa-trash"></i></a>
+												<!-- <a href="<?//= base_url('administrasi/deletebaptis/') . $b['baptis_id']; ?> " class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Yakin hapus data ini?')"><i class="fa fa-trash"></i></a> -->
 											</th>
 										</tr>
 

@@ -81,17 +81,41 @@ class Administrasi_model extends CI_Model
 
 	public function updatenikah()
 	{
-		$data = [
-			'n_cal_suami' => $this->input->post('n_cal_suami'),
-			'a_cal_suami' => $this->input->post('a_cal_suami'),
-			'n_cal_istri' => $this->input->post('n_cal_istri'),
-			'a_cal_istri' => $this->input->post('a_cal_istri'),
-			'n_saksi' => $this->input->post('n_saksi'),
-			'tgl_nikah' => $this->input->post('tgl_nikah'),
-			'tpt_nikah' => $this->input->post('tpt_nikah')
-		];
-		$this->db->where('nikah_id', $this->input->post('nikah_id'));
-		$this->db->update('nikah', $data);
+		$cek = $this->input->post('pilihan');
+
+		for ($i = 0; $i < count($cek); $i++) {
+			$data = [
+				'tgl_nikah' => $this->input->post('tanggal_nikah'),
+				'st_konfrim' => "1",
+			];
+
+			$this->db->where('nikah_id', $cek[$i]);
+			$this->db->update('nikah', $data);
+		}
+	}
+
+	public function laksananikah()
+	{
+		$cek = $this->input->post('pilihan');
+		switch($this->input->post('kehadiran')){
+			case 'hadir':
+				$st = 'Sudah';
+				break;
+			case 'ulang':
+				$st = 'Terdaftar';
+				break;
+			case 'batal':
+				$st = 'Belum';
+				break;
+		}
+
+		for ($i = 0; $i < count($cek); $i++) {
+			$this->db->where('nikah_id', $cek[$i]);
+			$usr = $this->db->get('nikah')->row_array();
+
+			$this->db->where('user_id', $usr['user_id']);
+			$this->db->update('user', array('st_nikah' => $st));
+		}
 	}
 
 	public function deleteDataKomuni($komuni_id)

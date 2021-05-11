@@ -142,6 +142,11 @@
             		$(this).tab('show')
             	})
 
+				$('#nikah-list a').on('click', function(e) {
+            		e.preventDefault()
+            		$(this).tab('show')
+            	})
+
 
             	$(function() {
             		$("#tanngal_lahir").datepicker({

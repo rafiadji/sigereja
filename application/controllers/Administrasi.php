@@ -189,11 +189,11 @@ class Administrasi extends CI_Controller
 
 	public function nikah()
 	{
-
 		$data['title'] = 'Nikah';
-
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['nikah'] = $this->db->where('st_nikah', 'Terdaftar')->get('daftar_nikah')->result_array();
+		$data['nikah_laksana'] = $this->db->where('st_nikah', 'Pelaksanaan')->get('daftar_nikah')->result_array();
+		$data['nikah_sudah'] = $this->db->where('st_nikah', 'Sudah')->get('daftar_nikah')->result_array();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
@@ -202,32 +202,25 @@ class Administrasi extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
-	public function editnikah($nikah_id)
+	public function editnikah()
 	{
-		$data['title'] = 'Edit Komuni';
+		$data['title'] = 'Edit nikah';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['nikah'] = $this->administrasi_model->getNikahByid($nikah_id);
+		$data['nikah'] = $this->db->where('st_nikah', 'Terdaftar')->get('daftar_nikah')->result_array();
 
-		$this->form_validation->set_rules('n_cal_suami', 'Nama calon suami', 'required');
-		$this->form_validation->set_rules('a_cal_suami', 'Alamat calon suami', 'required');
-		$this->form_validation->set_rules('n_cal_istri', 'Nama calon istri', 'required');
-		$this->form_validation->set_rules('a_cal_istri', 'Alamat calon istri', 'required');
-		$this->form_validation->set_rules('n_saksi', 'Nama saksi', 'required');
-		$this->form_validation->set_rules('tgl_nikah', 'Tanggal nikah', 'required');
-		$this->form_validation->set_rules('tpt_nikah', 'Tempat pernikahan', 'required');
+		$this->form_validation->set_rules('tanggal_nikah', 'Tanggal nikah', 'required');
+		$this->form_validation->set_rules('pilihan[]', 'Peserta', 'required');
 
 		if ($this->form_validation->run() == false) {
-
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/sidebar', $data);
 			$this->load->view('templates/topbar', $data);
-			$this->load->view('administrasi/editnikah', $data);
+			$this->load->view('administrasi/nikah', $data);
 			$this->load->view('templates/footer');
 		} else {
 			$this->administrasi_model->updatenikah();
-
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>SUCCESS! Update data nikah </div>');
+            <span aria-hidden="true">&times;</span></button>SUCCESS! Update data baptis </div>');
 			redirect('administrasi/nikah');
 		}
 	}
@@ -252,6 +245,29 @@ class Administrasi extends CI_Controller
 
 		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span></button> SUCCESS! Data nikah telah dihapus</div>');
+		redirect('administrasi/nikah');
+	}
+
+	public function pelaksanaannikah($tgl_nikah)
+	{
+		$data['title'] = 'Peserta baptis';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['nikah_laksana'] = $this->db->where('st_nikah', 'Pelaksanaan')->where('tgl_nikah', $tgl_nikah)->get('daftar_nikah')->result_array();
+		$data['tgl'] = $tgl_nikah;
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('administrasi/pelaksanaannikah', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function laksananikah()
+	{
+		$this->administrasi_model->laksananikah();
+
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button> SUCCESS! Data baptis telah dihapus</div>');
 		redirect('administrasi/nikah');
 	}
 

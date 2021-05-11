@@ -43,15 +43,21 @@
 									<tbody>
 										<?php foreach ($nikah as $n) : ?>
 											<tr>
-												<td><?= date('d F Y', strtotime($n['tgl_nikah'])); ?></td>
+												<?php if (isset($n['tgl_nikah'])) : ?>
+													<td><?= date('d F Y', strtotime($n['tgl_nikah'])); ?></td>
+												<?php else : ?>
+													<td>Belum di Atur</td>
+												<?php endif; ?>
 												<td><?= $n['name']; ?></td>
 												<td><?= $n['n_pasangan']; ?></td>
 												<td><?= $n['a_pasangan']; ?></td>
 												<td><?= $n['n_saksi']; ?></td>
 												<th>
-													<a href="<?= base_url('administrasi/editnikah/') . $n['nikah_id']; ?> " class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
+													<!-- <a href="<? //= base_url('administrasi/editnikah/') . $n['nikah_id']; 
+																	?> " class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a> -->
 													<a href="<?= base_url('administrasi/detailnikah/') . $n['nikah_id']; ?> " class="btn btn-success btn-circle btn-sm"><i class="fa fa-info"></i></a>
-													<a href="<?= base_url('administrasi/deletenikah/') . $n['nikah_id']; ?> " class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Yakin hapus data ini?')"><i class="fa fa-trash"></i></a>
+													<!-- <a href="<? //= base_url('administrasi/deletenikah/') . $n['nikah_id']; 
+																	?> " class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Yakin hapus data ini?')"><i class="fa fa-trash"></i></a> -->
 												</th>
 											</tr>
 										<?php endforeach; ?>
@@ -61,12 +67,65 @@
 						</div>
 						<div class="tab-pane" id="pelaksanaan" role="tabpanel">
 							<div class="table-responsive">
+								<table class="table table-striped w-100 dt-responsive nowrap dataTable">
+									<thead>
+										<tr>
+											<th>Tanggal nikah</th>
+											<th>Peserta</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php foreach ($nikah_laksana as $n) : ?>
+											<tr>
+												<?php if (isset($n['tgl_nikah'])) : ?>
+													<td><?= date('d F Y', strtotime($n['tgl_nikah'])); ?></td>
+												<?php else : ?>
+													<td>Belum di Atur</td>
+												<?php endif; ?>
+												<td><a href="<?= base_url('administrasi/pelaksanaannikah/') . $n['tgl_nikah']; ?> " class="btn btn-success btn-sm">Presensi Peserta</a></td>
+											</tr>
 
+										<?php endforeach; ?>
+									</tbody>
+								</table>
 							</div>
 						</div>
 						<div class="tab-pane" id="sudah" role="tabpanel">
 							<div class="table-responsive">
-
+								<table class="table table-striped w-100 dt-responsive nowrap dataTable">
+									<thead>
+										<tr>
+											<th>Tanggal Nikah</th>
+											<th>Nama pendaftar</th>
+											<th>Nama pasangan</th>
+											<th>Alamat pasangan</th>
+											<th>Nama Saksi</th>
+											<th>Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php foreach ($nikah_sudah as $n) : ?>
+											<tr>
+												<?php if (isset($n['tgl_nikah'])) : ?>
+													<td><?= date('d F Y', strtotime($n['tgl_nikah'])); ?></td>
+												<?php else : ?>
+													<td>Belum di Atur</td>
+												<?php endif; ?>
+												<td><?= $n['name']; ?></td>
+												<td><?= $n['n_pasangan']; ?></td>
+												<td><?= $n['a_pasangan']; ?></td>
+												<td><?= $n['n_saksi']; ?></td>
+												<th>
+													<!-- <a href="<? //= base_url('administrasi/editnikah/') . $n['nikah_id']; 
+																	?> " class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a> -->
+													<a href="<?= base_url('administrasi/detailnikah/') . $n['nikah_id']; ?> " class="btn btn-success btn-circle btn-sm"><i class="fa fa-info"></i></a>
+													<!-- <a href="<? //= base_url('administrasi/deletenikah/') . $n['nikah_id']; 
+																	?> " class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Yakin hapus data ini?')"><i class="fa fa-trash"></i></a> -->
+												</th>
+											</tr>
+										<?php endforeach; ?>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>
