@@ -6,7 +6,12 @@ class Laporan_model extends CI_Model
 {
     public function getAllBaptis()
     {
-        return $this->db->get('daftar_baptis')->result_array();
+        return $this->db->get_where('daftar_baptis', ['st_baptis' => 'Sudah'])->result_array();
+    }
+
+    public function getFilterBaptis($bln, $thn)
+    {
+        return $this->db->get_where('daftar_baptis', ['st_baptis' => 'Sudah', 'MONTH(tanggal_baptis)' => $bln, 'YEAR(tanggal_baptis)' => $thn])->result_array();
     }
 
     public function getLaporanBaptisByid($baptis_id)
@@ -20,6 +25,15 @@ class Laporan_model extends CI_Model
         return $this->db->get_where('komuni', ['komuni_id' => $komuni_id])->row_array();
     }
 
+    public function getAllNikah()
+    {
+        return $this->db->get_where('daftar_nikah', ['st_nikah' => 'Sudah'])->result_array();
+    }
+
+    public function getFilterNikah($bln, $thn)
+    {
+        return $this->db->get_where('daftar_nikah', ['st_nikah' => 'Sudah', 'MONTH(tgl_nikah)' => $bln, 'YEAR(tgl_nikah)' => $thn])->result_array();
+    }
 
     public function getNikahByid($nikah_id)
     {
