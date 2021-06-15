@@ -179,7 +179,8 @@
 								</div>
 								<div class="col-sm-8">
 									<input type="date" class="form-control" id="tgl_baptis" name="tgl_baptis">
-									<?//= form_error('tgl_baptis', '<small class="text-danger pl-3">', '</small>'); ?>
+									<? //= form_error('tgl_baptis', '<small class="text-danger pl-3">', '</small>'); 
+									?>
 								</div>
 							</div> -->
 							<div class="form-group">
@@ -230,6 +231,16 @@
 
 					<form action="<?= base_url('user/registrasinikah/' . $user['nik_kk']) ?>" method="post">
 						<div class="modal-body">
+							<div class="form-group row">
+								<div class="col-sm-4">
+									<label for="tgl_nikah" class="control-label">Tanggal Nikah</label>
+								</div>
+								<div class="col-sm-8">
+									<input type="date" class="form-control" id="tgl_nikah" name="tgl_nikah">
+									<?= form_error('tgl_nikah', '<small class="text-danger pl-3">', '</small>'); 
+									?>
+								</div>
+							</div>
 							<div class="form-group">
 								<select name="id_peserta" id="id_peserta" class="form-control">
 									<option value="">-Nama Pendaftar-</option>

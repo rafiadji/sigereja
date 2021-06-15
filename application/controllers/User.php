@@ -89,6 +89,7 @@ class User extends CI_Controller
         $data['users'] = $this->User_model->getUmatById($user_id);
 
         $this->form_validation->set_rules('id_peserta', 'Peserta', 'required');
+        $this->form_validation->set_rules('tgl_nikah', 'Tanggal Pernikahan', 'required');
         $this->form_validation->set_rules('nik_pasangan', 'NIK Pasangan', 'required');
         $this->form_validation->set_rules('n_pasangan', 'Nama Pasangan', 'required');
         $this->form_validation->set_rules('a_pasangan', 'Alamat Pasangan', 'required');
@@ -102,6 +103,7 @@ class User extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $data = [
+                'tgl_nikah' => $this->input->post('tgl_nikah'),
                 'user_id' => $this->input->post('id_peserta'),
                 'nik_pasangan' => $this->input->post('nik_pasangan'),
                 'n_pasangan' => $this->input->post('n_pasangan'),

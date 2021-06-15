@@ -19,6 +19,7 @@ class Admin extends CI_Controller
         $data['test'] = ['1', '2'];
 
         $data['listuser'] = $this->db->get('user')->result_array();
+		$data['pengumuman'] = $this->db->get('pengumuman')->result_array();
 
         //COUNT DATABASE TABLE QUERY
         $data['count_baptis'] = $this->db->count_all('baptis');
